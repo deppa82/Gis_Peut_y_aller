@@ -26,6 +26,7 @@ with col1:
     m = leafmap.Map(
         center=[45.224461, -0.773946], zoom=10,locate_control=True, latlon_control=True, 
         draw_export=True, minimap_control=True
+        
     )
     m.add_basemap(basemap)
     m.to_streamlit(height=700)

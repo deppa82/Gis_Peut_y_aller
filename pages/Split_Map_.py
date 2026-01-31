@@ -19,8 +19,8 @@ with st.expander("Explaination"):
     st.write('left panel shows the NDVI index')
     st.write('right panel shows ESA land cover as shown in the legend')
 
-# gdf = gpd.read_file('/Users/deppa/PythonLuigi/GIS__GoogleEarthEngine__MattForrest_etc/QGis_software_practicing/Project_Lafite/Saved/A_NDVI.tiff')
-# gdf2 = gpd.read_file("/Users/deppa/PythonLuigi/GIS__GoogleEarthEngine__MattForrest_etc/QGis_software_practicing/Project_Lafite/Saved/A.tiff")
+# gdf = gpd.read_file('/Users/deppa/PythonLuigi/streamlit/Gis_Bazar_solving/Gis_Peut_y_aller/Saved/Project_Lafite__per_Leafmap.gpkg')
+# gdf2 = gpd.read_file("/Users/deppa/PythonLuigi/streamlit/Gis_Bazar_solving/Gis_Peut_y_aller/Saved/Project_Lafite__per_Leafmap.gpkg")
 m = leafmap.Map(center=[45.224461, -0.773946], zoom=14)
 m.split_map(
     left_layer= m.add_gdf(gdf, layer_name="NDVI"),
