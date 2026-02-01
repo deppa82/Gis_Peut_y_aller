@@ -19,13 +19,10 @@ with st.expander("Explaination"):
     st.write('left panel shows the NDVI index')
     st.write('right panel shows ESA land cover as shown in the legend')
 
-# gdf = gpd.read_file('/Users/deppa/PythonLuigi/streamlit/Gis_Bazar_solving/Gis_Peut_y_aller/Saved/Project_Lafite__per_Leafmap.gpkg')
-# gdf2 = gpd.read_file("/Users/deppa/PythonLuigi/streamlit/Gis_Bazar_solving/Gis_Peut_y_aller/Saved/Project_Lafite__per_Leafmap.gpkg")
-m = leafmap.Map(center=[45.224461, -0.773946], zoom=14)
-m.split_map(
-    left_layer= m.add_gdf(gdf, layer_name="NDVI"),
-    right_layer= m.add_gdf(gdf2, layer_name="Analysis")
-)
+url1 = 'https://github.com/deppa82/Gis_Peut_y_aller/blob/main/Saved/C.svg'
+url2 = 'https://github.com/deppa82/Gis_Peut_y_aller/blob/main/Saved/C.svg'
+m = leafmap.Map(center=[45.224461, -0.773946], zoom=17)
+m.split_map(left_layer=url1,right_layer=url2)
 m.add_legend(title="Peut_y_alet")
 
 m.to_streamlit(height=700)
