@@ -14,12 +14,4 @@ st.set_page_config(layout="wide")
 url = '/Users/deppa/PythonLuigi/streamlit/Gis_Bazar_solving/Gis_Peut_y_aller/Saved/Geo Dataset/parcelles_outlines.geojson'
 gdf = gpd.read_file(url)
 
-m = leafmap.Map(center=[45.224461, -0.773946], zoom=17, height=700)
-m.add_tile_layer(
-    url="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-    name="Google Satellite",
-    attribution="Google",
-)
-m.add_marker(location=[45.224461, -0.773946], draggable=True)
-m.add_gdf(gdf)  
-m.to_streamlit(height=700)
+st.dataframe(gdf)
