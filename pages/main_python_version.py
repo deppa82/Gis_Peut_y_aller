@@ -1,16 +1,10 @@
-import streamlit as st
-import leafmap.foliumap as leafmap
+
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-# import leafmap
-# import folium
-
-
-st.set_page_config(layout="wide")
-
-
+import leafmap
+import folium
 
 #  GET DATA    These Files come all from QGIS
 # gdf CRS is EPSG 4326.  It's a geographic not a Projection.  Unit is Degree
@@ -33,21 +27,13 @@ gdf = gdf.set_index('id')
 #   METODO MIGLIORE
 # la geometria la creo direttamente dagli Shaply points
 from shapely import wkt
-gdf1 = gdf
-gdf1['centroid']= gdf1.centroid
-gdf1 = gdf1.filter(['centroid'])
 gdf2 = gdf1.filter(['centroid'])
 gdf2['centroid'] = gdf2['centroid'].astype('str')
 gdf2["Coordinates"] = gpd.GeoSeries.from_wkt(gdf2["centroid"])
 gdf2 = gpd.GeoDataFrame(gdf2, geometry="Coordinates")
 
-st.sidebar.title("Agri_Performance")
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
 
-
-st.title("Interactive Map")
-
+# DATA VISUALIZATION
 m = leafmap.Map(center=[45.224461, -0.773946], zoom=17, height=700)
 m.add_tile_layer(
     url="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
@@ -82,4 +68,6 @@ m.add_gdf(gdf2, point_style=point_style)
 m.add_gdf(gdf_mildiou, point_style=point_style1)
 m.add_gdf(gdf_Humidity_point, point_style=point_style2)
 
-m.to_streamlit(height=700)
+m
+
+
